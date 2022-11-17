@@ -1,48 +1,21 @@
-import { TouchableOpacity, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import colors from './app/configurations/colors';
-import { useFonts } from 'expo-font';
+import LoginScreen from './app/screens/LoginScreen';
+import WelcomeScreen from './app/screens/WelcomeScreen';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    PoppinsBold: require('./app/assets/fonts/poppins/Poppins-Bold.otf'),
-    PoppinsMedium: require('./app/assets/fonts/poppins/Poppins-Medium.otf'),
-    PoppinsLight: require('./app/assets/fonts/poppins/Poppins-Light.otf'),
-  });
-
-  const onPressAccountButton = () => {
-
-  }
-  const onPressStartedButton = () => {
-
-  }
   return (
-    <ImageBackground source={require('./app/assets/women-background.jpeg')} style={styles.container} >
-
-      {/* Background */}
-      <View style={styles.backgroundOverlay} />
-
-      {/* Title */}
-      <Text style={styles.title}>DUOLINGUO</Text>
-
-      {/* SubTitle */}
-      <Text style={styles.subTitle}>Learn languages{"\n"}from Content You{"\n"}            Love</Text>
-
-      {/* Devider */}
-      <View style={styles.line} />
-
-      {/* Slogan */}
-      <Text style={styles.slogan}>   The Fast, Fun and{"\n"}effective way to Learn</Text>
-
-      {/* Get started for free button */}
-      <TouchableOpacity style={styles.getStartedButton} onPress={onPressStartedButton}>
-        <Text style={styles.getStartedButtonText}>Get started for free!</Text>
-      </TouchableOpacity>
-
-      {/* Already have an account button */}
-      <TouchableOpacity style={styles.alreadyAccountButton} onPress={onPressAccountButton}>
-        <Text style={styles.alreadyAccountButtonText}>I already have an account</Text>
-      </TouchableOpacity>
-    </ImageBackground>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen options={{ headerShown: false }} name="WelcomeScreen" component={WelcomeScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="LoginScreen" component={LoginScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

@@ -1,16 +1,42 @@
 import { TouchableOpacity, ImageBackground, StyleSheet, Text, View } from 'react-native'
 import React, { Component } from 'react'
+import colors from '../../app/configurations/colors';
+import { useFonts } from 'expo-font';
+import { useNavigation } from '@react-navigation/native';
+
+let customFonts = {
+  'PoppinsBold': require('../../app/assets/fonts/poppins/Poppins-Bold.otf'),
+  'PoppinsMedium': require('../../app/assets/fonts/poppins/Poppins-Medium.otf'),
+  'PoppinsLight': require('../../app/assets/fonts/poppins/Poppins-Light.otf'),
+};
 
 export default class WelcomeScreen extends Component {
+  state = {
+    fontsLoaded: false,
+  }
+
+  async _loadFontsAsync() {
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
+  }
+
+  componentDidMount() {
+    this._loadFontsAsync();
+  }
+
+  onPressStartedButton() {
+    this.props.navigation.goBack();
+    this.props.navigation.navigate('LoginScreen');
+  }
+
+  onPressAccountButton() {
+    this.props.navigation.navigate('LoginScreen');
+  }
 
   render() {
-    const [fontsLoaded] = useFonts({
-      PoppinsBold: require('./app/assets/fonts/poppins/Poppins-Bold.otf'),
-      PoppinsMedium: require('./app/assets/fonts/poppins/Poppins-Medium.otf'),
-      PoppinsLight: require('./app/assets/fonts/poppins/Poppins-Light.otf'),
-    });
+
     return (
-      <ImageBackground source={require('./app/assets/women-background.jpeg')} style={styles.container} >
+      <ImageBackground source={require('../../app/assets/women-background.jpeg')} style={styles.container} >
 
         {/* Background */}
         <View style={styles.backgroundOverlay} />
@@ -28,12 +54,12 @@ export default class WelcomeScreen extends Component {
         <Text style={styles.slogan}>   The Fast, Fun and{"\n"}effective way to Learn</Text>
 
         {/* Get started for free button */}
-        <TouchableOpacity style={styles.getStartedButton} onPress={onPressStartedButton}>
+        <TouchableOpacity style={styles.getStartedButton} onPress={this.onPressStartedButton}>
           <Text style={styles.getStartedButtonText}>Get started for free!</Text>
         </TouchableOpacity>
 
         {/* Already have an account button */}
-        <TouchableOpacity style={styles.alreadyAccountButton} onPress={onPressAccountButton}>
+        <TouchableOpacity style={styles.alreadyAccountButton} onPress={this.onPressAccountButton}>
           <Text style={styles.alreadyAccountButtonText}>I already have an account</Text>
         </TouchableOpacity>
       </ImageBackground>
