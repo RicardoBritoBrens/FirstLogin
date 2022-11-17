@@ -1,30 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, Image, ImageBackground, StyleSheet, Text, View, Divider } from 'react-native';
+import { TouchableOpacity, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import colors from './app/configurations/colors';
 import { useFonts } from 'expo-font';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    featherRegular: require('./app/assets/fonts/Feather/featherRegular.otf'),
+    PoppinsBold: require('./app/assets/fonts/poppins/Poppins-Bold.otf'),
+    PoppinsMedium: require('./app/assets/fonts/poppins/Poppins-Medium.otf'),
+    PoppinsLight: require('./app/assets/fonts/poppins/Poppins-Light.otf'),
   });
+
+  const onPressAccountButton = () => {
+
+  }
+  const onPressStartedButton = () => {
+
+  }
   return (
     <ImageBackground source={require('./app/assets/women-background.jpeg')} style={styles.container} >
+
+      {/* Background */}
       <View style={styles.backgroundOverlay} />
 
+      {/* Title */}
       <Text style={styles.title}>DUOLINGUO</Text>
 
-      <Text style={styles.subTitle}>Learn languages from Content You Love</Text>
+      {/* SubTitle */}
+      <Text style={styles.subTitle}>Learn languages{"\n"}from Content You{"\n"}            Love</Text>
 
-      {/* devider */}
+      {/* Devider */}
       <View style={styles.line} />
 
-      <Text style={styles.slogan}>The Fast, Fun and effective way to Learn</Text>
+      {/* Slogan */}
+      <Text style={styles.slogan}>   The Fast, Fun and{"\n"}effective way to Learn</Text>
 
-      <Button style={styles.getStartedButton} title='Get started for free!'></Button>
-      <Button style={styles.alreadyAccountButton} title='I already have an account'></Button>
+      {/* Get started for free button */}
+      <TouchableOpacity style={styles.getStartedButton} onPress={onPressStartedButton}>
+        <Text style={styles.getStartedButtonText}>Get started for free!</Text>
+      </TouchableOpacity>
+
+      {/* Already have an account button */}
+      <TouchableOpacity style={styles.alreadyAccountButton} onPress={onPressAccountButton}>
+        <Text style={styles.alreadyAccountButtonText}>I already have an account</Text>
+      </TouchableOpacity>
     </ImageBackground>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -46,36 +67,69 @@ const styles = StyleSheet.create({
     opacity: 0.85
   },
   fontColor: {
-    color: colors.fontColor,
-    fontFamily: 'featherRegular'
+    color: colors.white,
+    fontFamily: 'PoppinsLight'
   },
   title: {
-    color: colors.fontColor,
-    fontFamily: 'featherRegular',
-    fontSize: 32
+    color: colors.white,
+    fontFamily: 'PoppinsBold',
+    fontSize: 32,
+    position: 'absolute',
+    top: 120
   },
   subTitle: {
-    color: colors.fontColor,
-    fontSize: 26
+    color: colors.white,
+    fontFamily: 'PoppinsMedium',
+    fontSize: 30,
+    position: 'absolute',
   },
   line: {
-    height: 1, backgroundColor: 'white', width: '70%'
+    height: 1,
+    backgroundColor: 'white',
+    width: '68%',
+    opacity: 0.5,
+    position: 'absolute',
+    bottom: 310
   },
   slogan: {
-    color: colors.fontColor,
+    color: colors.white,
+    fontSize: 18,
+    position: 'absolute',
+    bottom: 240,
+    opacity: 0.5,
   },
   getStartedButton: {
     width: '80%',
     height: 50,
-    borderRadius: 20
+    borderRadius: 10,
+    backgroundColor: colors.primary,
+    color: colors.white,
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 80,
+  },
+  getStartedButtonText: {
+    top: 15,
+    color: colors.white,
+    fontFamily: 'PoppinsLight',
+    fontWeight: 'bold'
   },
   alreadyAccountButton: {
     width: '80%',
     height: 50,
-    borderRadius: 20
+    borderRadius: 10,
+    backgroundColor: colors.white,
+    color: colors.black,
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 20
+  },
+  alreadyAccountButtonText: {
+    top: 15,
+    color: colors.black,
+    fontFamily: 'PoppinsLight',
+    fontWeight: 'bold'
   }
-
-
 });
 
 

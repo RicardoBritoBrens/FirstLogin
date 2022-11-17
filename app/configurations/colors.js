@@ -4,5 +4,6 @@ export default
         secondary: '#3A4859',
         primary_background: '#072A59',
         secondary_background: '#091A2F',
-        fontColor: 'white'
+        white: 'white',
+        black: 'black'
     }
