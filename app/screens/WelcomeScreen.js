@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import colors from '../../app/configurations/colors';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
+import * as Font from 'expo-font';
 
 let customFonts = {
   'PoppinsBold': require('../../app/assets/fonts/poppins/Poppins-Bold.otf'),
@@ -12,7 +13,7 @@ let customFonts = {
 
 export default class WelcomeScreen extends Component {
   state = {
-    fontsLoaded: false,
+    fontsLoaded: false
   }
 
   async _loadFontsAsync() {
