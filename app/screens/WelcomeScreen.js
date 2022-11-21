@@ -1,8 +1,6 @@
 import { TouchableOpacity, ImageBackground, StyleSheet, Text, View } from 'react-native'
 import React, { Component } from 'react'
 import colors from '../../app/configurations/colors';
-import { useFonts } from 'expo-font';
-import { useNavigation } from '@react-navigation/native';
 import * as Font from 'expo-font';
 
 let customFonts = {
@@ -12,8 +10,11 @@ let customFonts = {
 };
 
 export default class WelcomeScreen extends Component {
-  state = {
-    fontsLoaded: false
+  constructor(props) {
+    super(props);
+
+    this.state = {
+    }
   }
 
   async _loadFontsAsync() {
@@ -23,15 +24,6 @@ export default class WelcomeScreen extends Component {
 
   componentDidMount() {
     this._loadFontsAsync();
-  }
-
-  onPressStartedButton() {
-    this.props.navigation.goBack();
-    this.props.navigation.navigate('LoginScreen');
-  }
-
-  onPressAccountButton() {
-    this.props.navigation.navigate('LoginScreen');
   }
 
   render() {
@@ -55,16 +47,24 @@ export default class WelcomeScreen extends Component {
         <Text style={styles.slogan}>   The Fast, Fun and{"\n"}effective way to Learn</Text>
 
         {/* Get started for free button */}
-        <TouchableOpacity style={styles.getStartedButton} onPress={this.onPressStartedButton}>
+        <TouchableOpacity style={styles.getStartedButton} onPress={() => this.onPressStartedButton(this.props.navigation)}>
           <Text style={styles.getStartedButtonText}>Get started for free!</Text>
         </TouchableOpacity>
 
         {/* Already have an account button */}
-        <TouchableOpacity style={styles.alreadyAccountButton} onPress={this.onPressAccountButton}>
+        <TouchableOpacity style={styles.alreadyAccountButton} onPress={() => this.onPressAccountButton(this.props.navigation)}>
           <Text style={styles.alreadyAccountButtonText}>I already have an account</Text>
         </TouchableOpacity>
       </ImageBackground>
     );
+  }
+
+  onPressStartedButton(navigation) {
+    navigation.navigate('Login');
+  }
+
+  onPressAccountButton(navigation) {
+    navigation.navigate('Login');
   }
 }
 
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   getStartedButtonText: {
     top: 15,
     color: colors.white,
-    fontFamily: 'PoppinsLight',
+    fontFamily: 'PoppinsMedium',
     fontWeight: 'bold'
   },
   alreadyAccountButton: {
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   alreadyAccountButtonText: {
     top: 15,
     color: colors.black,
-    fontFamily: 'PoppinsLight',
+    fontFamily: 'PoppinsMedium',
     fontWeight: 'bold'
   }
 })
