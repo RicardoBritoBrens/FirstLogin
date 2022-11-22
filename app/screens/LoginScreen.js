@@ -1,9 +1,8 @@
-import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from "react-native";
 import colors from '../../app/configurations/colors';
 import * as Font from 'expo-font';
-
+import Ionicons from '@expo/vector-icons/Ionicons';
 let customFonts = {
     'PoppinsBold': require('../../app/assets/fonts/poppins/Poppins-Bold.otf'),
     'PoppinsMedium': require('../../app/assets/fonts/poppins/Poppins-Medium.otf'),
@@ -14,6 +13,10 @@ export default class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            value: '',
+            username: '',
+            password: '',
+            defaultMessageWorkingFeatures: 'We are working to complete this feature as soon as possible.'
         }
     }
 
@@ -34,6 +37,34 @@ export default class LoginScreen extends Component {
         this.loadFontsAsync();
     }
 
+    handleLogIn = (event) => {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+    }
+
+    logInApp() {
+        let fieldAreValid = false;
+        fieldAreValid = this.state.username !== '';
+        fieldAreValid = this.state.password !== '';
+        if (fieldAreValid) {
+            alert('Welcome Back Mr/Mss: ' + this.state.username + ', ' + this.state.defaultMessageWorkingFeatures)
+        } else {
+            alert('You most complete all the fields');
+        }
+    }
+
+    logInGoogle() {
+        alert(this.state.defaultMessageWorkingFeatures)
+    }
+
+    logInFacebook() {
+        alert(this.state.defaultMessageWorkingFeatures)
+    }
+
+    workingHandler() {
+        alert(this.state.defaultMessageWorkingFeatures)
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -41,33 +72,32 @@ export default class LoginScreen extends Component {
                 <Text style={styles.sub_title}>     Login to{"\n"}your Account</Text>
 
                 <View style={styles.form}>
-                    <TextInput style={styles.input_username} placeholderTextColor="white" placeholder="Username or email"></TextInput >
-                    <TextInput style={styles.input_password} placeholderTextColor="white" placeholder="Password"></TextInput >
+                    <TextInput style={styles.input_username} onChangeText={newText => this.setState({ username: newText })} placeholderTextColor="white" placeholder="Username or email"></TextInput >
+                    <TextInput style={styles.input_password} onChangeText={newText => this.setState({ password: newText })} secureTextEntry={true} placeholderTextColor="white" placeholder="Password"></TextInput >
 
-                    <TouchableOpacity style={styles.forgot_button}>
+                    <TouchableOpacity style={styles.forgot_button} onPress={() => this.workingHandler()}>
                         <Text style={styles.forgot_button_text}>Forgot your Password?</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.login_button}>
+                    <TouchableOpacity style={styles.login_button} onPress={() => this.logInApp()}>
                         <Text style={styles.login_button_text}>Log in</Text>
                     </TouchableOpacity>
 
                     <Text style={styles.or_login_with_text} >or log in with</Text>
 
                     <View style={styles.social_network_container_login}>
-                        <TouchableOpacity style={styles.google_login}>
-                            <Text style={[styles.text_color]}>icon google</Text>
-                            <Text style={[styles.text_color]}>or log in with</Text>
+                        <TouchableOpacity style={styles.google_login} onPress={() => this.logInGoogle()}>
+                            <Ionicons style={styles.google_icon} name="logo-google" />
+                            <Text style={[styles.text_color]}>Google</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.facebook_login}>
-                            <Text style={[styles.text_color]}>facebook icon</Text>
-                            <Text style={[styles.text_color]}>or log in with</Text>
+                        <TouchableOpacity style={styles.facebook_login} onPress={() => this.logInFacebook()}>
+                            <Ionicons style={styles.facebook_icon} name="logo-facebook" />
+                            <Text style={[styles.text_color]}>Facebook</Text>
                         </TouchableOpacity>
                     </View>
+                    <Text style={styles.text_policy}>By using Duolingo you agree to our <Text style={styles.text_bold} >Term of Service</Text> and {"\n"}                                      <Text style={styles.text_bold}>Privacy Policy.</Text></Text>
                 </View>
-
-                <Text style={styles.text_policy}>By using Duolingo you agree to our <Text style={styles.text_bold} >Term of Service</Text> and <Text style={styles.text_bold}>Term of Service</Text></Text>
             </View>
         )
     }
@@ -100,7 +130,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 50,
         paddingLeft: 16,
-        marginBottom: 10
+        marginBottom: 10,
+        color: colors.white
     },
     input_password: {
         borderRadius: 10,
@@ -108,6 +139,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 50,
         paddingLeft: 16,
+        color: colors.white
     },
     forgot_button: {
         width: '80%',
@@ -154,8 +186,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#3A4859',
         width: '50%',
         height: 50,
-        paddingLeft: 16,
-        right: 0.5
+        right: 0.5,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    google_icon: {
+        fontSize: 18,
+        color: colors.white,
     },
     facebook_login: {
         color: colors.white,
@@ -166,16 +205,25 @@ const styles = StyleSheet.create({
         backgroundColor: '#3A4859',
         width: '50%',
         height: 50,
-        paddingLeft: 16,
-        left: 0.5
+        left: 0.5,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    facebook_icon: {
+        fontSize: 18,
+        color: colors.white,
     },
     text_color: {
-        color: colors.white
+        color: colors.white,
+        marginLeft: 10,
     },
     text_policy: {
         color: colors.white,
-        top: 255,
+        top: 50,
         opacity: 0.5,
+        fontSize: 12
     },
     text_bold: {
         fontWeight: 'bold',
