@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native";
 import colors from '../../app/configurations/colors';
 import * as Font from 'expo-font';
 import Ionicons from '@expo/vector-icons/Ionicons';
