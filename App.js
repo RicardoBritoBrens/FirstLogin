@@ -1,8 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import colors from './app/configurations/colors';
 import LoginScreen from './app/screens/LoginScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 
@@ -12,8 +10,8 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
         <Stack.Screen options={{ headerShown: false }} name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
