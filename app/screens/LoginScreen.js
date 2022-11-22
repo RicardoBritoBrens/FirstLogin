@@ -40,32 +40,34 @@ export default class LoginScreen extends Component {
                 <Text style={styles.title}>DUOLINGO</Text>
                 <Text style={styles.sub_title}>     Login to{"\n"}your Account</Text>
 
-                <TextInput style={styles.input_username} placeholderTextColor="white" placeholder="Username or email"></TextInput >
-                <TextInput style={styles.input_password} placeholderTextColor="white" placeholder="Password"></TextInput >
+                <View style={styles.form}>
+                    <TextInput style={styles.input_username} placeholderTextColor="white" placeholder="Username or email"></TextInput >
+                    <TextInput style={styles.input_password} placeholderTextColor="white" placeholder="Password"></TextInput >
 
-                <TouchableOpacity style={styles.forgot_button}>
-                    <Text style={styles.forgot_button_text}>Forgot your Password?</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.login_button}>
-                    <Text style={styles.login_button_text}>Log in</Text>
-                </TouchableOpacity>
-
-                <Text style={styles.or_login_with_text} >or log in with</Text>
-
-                <View style={styles.social_network_container_login}>
-                    <TouchableOpacity style={styles.google_login}>
-                        <Text style={[styles.text_color]}>icon google</Text>
-                        <Text style={[styles.text_color]}>or log in with</Text>
+                    <TouchableOpacity style={styles.forgot_button}>
+                        <Text style={styles.forgot_button_text}>Forgot your Password?</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.facebook_login}>
-                        <Text style={[styles.text_color]}>facebook icon</Text>
-                        <Text style={[styles.text_color]}>or log in with</Text>
+                    <TouchableOpacity style={styles.login_button}>
+                        <Text style={styles.login_button_text}>Log in</Text>
                     </TouchableOpacity>
+
+                    <Text style={styles.or_login_with_text} >or log in with</Text>
+
+                    <View style={styles.social_network_container_login}>
+                        <TouchableOpacity style={styles.google_login}>
+                            <Text style={[styles.text_color]}>icon google</Text>
+                            <Text style={[styles.text_color]}>or log in with</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.facebook_login}>
+                            <Text style={[styles.text_color]}>facebook icon</Text>
+                            <Text style={[styles.text_color]}>or log in with</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
-                <Text>By using Duolingo you agree to our <Text>Term of Service</Text> and <Text>Term of Service</Text></Text>
+                <Text style={styles.text_policy}>By using Duolingo you agree to our <Text style={styles.text_bold} >Term of Service</Text> and <Text style={styles.text_bold}>Term of Service</Text></Text>
             </View>
         )
     }
@@ -80,70 +82,69 @@ const styles = StyleSheet.create({
     },
     title: {
         color: colors.white,
-
         fontSize: 32,
-        position: 'absolute',
-        top: 120
+        bottom: 220
     },
     sub_title: {
         color: colors.white,
-
         fontSize: 30,
-        position: 'absolute',
-        top: 250
+        bottom: 130
+    },
+    form: {
+        width: '80%',
+        height: '10%'
     },
     input_username: {
-        top: 126,
         borderRadius: 10,
         backgroundColor: '#3A4859',
-        width: '80%',
+        width: '100%',
         height: 50,
         paddingLeft: 16,
+        marginBottom: 10
     },
     input_password: {
         borderRadius: 10,
         backgroundColor: '#3A4859',
-        top: 136,
-        width: '80%',
+        width: '100%',
         height: 50,
         paddingLeft: 16,
     },
     forgot_button: {
         width: '80%',
         height: 50,
-        position: 'absolute',
-        bottom: 164,
+        bottom: 15,
+        left: 60
     },
     forgot_button_text: {
-        top: 15,
+        top: 22,
         color: colors.white,
         textAlign: 'right',
         opacity: 0.5,
     },
     login_button: {
-        width: '80%',
+        width: '100%',
         height: 50,
         borderRadius: 10,
         backgroundColor: colors.primary,
         color: colors.white,
         alignItems: 'center',
-        position: 'absolute',
-        bottom: 80,
     },
     login_button_text: {
         top: 15,
         color: colors.white,
-
         fontWeight: 'bold'
     },
     or_login_with_text: {
         color: colors.white,
-        position: "absolute",
-        bottom: 50
+        top: 12,
+        textAlign: 'center',
+        justifyContent: 'center',
     },
     social_network_container_login: {
         display: 'flex',
         flexDirection: 'row',
+        backgroundColor: 'white',
+        top: 30
     },
     google_login: {
         color: colors.white,
@@ -163,5 +164,13 @@ const styles = StyleSheet.create({
     },
     text_color: {
         color: colors.white
+    },
+    text_policy: {
+        color: colors.white,
+        top: 255,
+        opacity: 0.5,
+    },
+    text_bold: {
+        fontWeight: 'bold',
     }
 });
