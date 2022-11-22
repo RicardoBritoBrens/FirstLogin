@@ -11,10 +11,7 @@ This is my first replication of ui using react native.
 
 ## Screens
 
-Welcome
 ![text](https://github.com/RicardoBritoBrens/FirstLogin/blob/master/app/assets/Welcome.png)
-
-Login
 ![text](https://github.com/RicardoBritoBrens/FirstLogin/blob/master/app/assets/Login.png)
 
 ## References
