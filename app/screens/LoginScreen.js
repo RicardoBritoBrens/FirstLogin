@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     title: {
         color: colors.white,
         fontSize: 32,
-        bottom: 220
+        bottom: 170
     },
     sub_title: {
         color: colors.white,
