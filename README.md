@@ -2,21 +2,24 @@
 
 This is my first replication of ui using react native.
 
+![First Gif](https://github.com/RicardoBritoBrens/FirstLogin/blob/master/app/assets/first.gif)
+![Second Gif](https://github.com/RicardoBritoBrens/FirstLogin/blob/master/app/assets/second.gif)
+
 ## Inspiration
 
-![text](https://assets.materialup.com/uploads/7e1e87e9-8342-4101-9008-8262af9b9359/preview.png)
+![OEM](https://github.com/RicardoBritoBrens/FirstLogin/blob/master/app/assets/oem.png)
 
 ## Screens
 
 Welcome
-![text](https://assets.materialup.com/uploads/7e1e87e9-8342-4101-9008-8262af9b9359/preview.png)
+![text](https://github.com/RicardoBritoBrens/FirstLogin/blob/master/app/assets/Welcome.png)
 
 Login
-![text](https://assets.materialup.com/uploads/7e1e87e9-8342-4101-9008-8262af9b9359/preview.png)
+![text](https://github.com/RicardoBritoBrens/FirstLogin/blob/master/app/assets/Login.png)
 
 ## References
 
-https://search.muz.li/NmU2ZDAxYmMy?utm_source=muz.li-insp&utm_medium=article&utm_campaign=%2Finspiration%2Flogin-screen%2F
+* https://search.muz.li/NmU2ZDAxYmMy?utm_source=muz.li-insp&utm_medium=article&utm_campaign=%2Finspiration%2Flogin-screen%2F
 
 ## Tools
 
