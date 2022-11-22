@@ -143,24 +143,31 @@ const styles = StyleSheet.create({
     social_network_container_login: {
         display: 'flex',
         flexDirection: 'row',
-        backgroundColor: 'white',
         top: 30
     },
     google_login: {
         color: colors.white,
-        borderRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 0,
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 0,
         backgroundColor: '#3A4859',
         width: '50%',
         height: 50,
         paddingLeft: 16,
+        right: 0.5
     },
     facebook_login: {
         color: colors.white,
-        borderRadius: 10,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 10,
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 10,
         backgroundColor: '#3A4859',
         width: '50%',
         height: 50,
         paddingLeft: 16,
+        left: 0.5
     },
     text_color: {
         color: colors.white
